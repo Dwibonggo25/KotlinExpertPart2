@@ -1,14 +1,16 @@
-package com.example.dicodingexpert2.ui
+package com.example.dicodingexpert2.ui.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dicodingexpert2.databinding.RvListLeagueBinding
 import com.example.dicodingexpert2.model.League
 
-class MainActivityAdapter : ListAdapter<League, MainActivityAdapter.ViewHolder>(DiffCallback) {
+class HomeFragmentAdapter : ListAdapter<League, HomeFragmentAdapter.ViewHolder>(DiffCallback) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
 
@@ -22,16 +24,16 @@ class MainActivityAdapter : ListAdapter<League, MainActivityAdapter.ViewHolder>(
 
         init {
             binding.setClicklistener {
-                binding.list?.let {foods ->
-
+                binding.list?.let {league ->
+                    navigateToDetail (league, it)
                 }
             }
         }
 
-//        private fun navigateToPlant(foods: Foods, it: View) {
-//            val action  = ListDraftMenuFragmentDirections.actionDetailFoodMenuLaunch(foods.foodsId)
-//            it.findNavController().navigate(action)
-//        }
+        private fun navigateToDetail(league: League, it: View) {
+            val action = HomeLeagueFragmentDirections.detailLeagueFragmentLaunch(league.idLeague.toInt())
+            it.findNavController().navigate(action)
+        }
 
         fun bind(item: League) {
             binding.apply {

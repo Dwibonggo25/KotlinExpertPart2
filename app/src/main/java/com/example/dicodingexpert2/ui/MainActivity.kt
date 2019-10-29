@@ -24,9 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initBinding()
 
-
-        viewModel.getAllLeague()
-
         initRecyclerView ()
         viewListLeague()
     }
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewListLeague() {
-        viewModel.isData.observe(this, Observer {
+        viewModel.data.observe(this, Observer {
             adapter.submitList(it.leagues)
         })
     }

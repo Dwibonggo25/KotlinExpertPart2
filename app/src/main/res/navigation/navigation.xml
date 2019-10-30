@@ -22,5 +22,25 @@
         <argument
             android:name="idLeague"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionMatchInfoFragmentLaunch"
+            app:destination="@id/matchInfoFragment" />
+        <action
+            android:id="@+id/actionPreviousMatchLaunch"
+            app:destination="@id/previousMatchFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/matchInfoFragment"
+        android:name="com.example.dicodingexpert2.ui.matchinfo.MatchInfoFragment"
+        android:label="fragment_match_info"
+        tools:layout="@layout/fragment_match_info" >
+        <argument
+            android:name="idLeague"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/previousMatchFragment"
+        android:name="com.example.dicodingexpert2.PreviousMatchFragment"
+        android:label="fragment_previous_match"
+        tools:layout="@layout/fragment_previous_match" />
 </navigation>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentDetailLeagueBinding
@@ -22,6 +23,7 @@ class DetailLeagueFragment : Fragment() {
 
     private lateinit var adapter: DetailLeagueAdapter
 
+    var idLeague : Int= 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         viewmodel = ViewModelProviders.of(activity!!).get(DetailLeagueViewmodel::class.java)
@@ -35,7 +37,7 @@ class DetailLeagueFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val idLeague = DetailLeagueFragmentArgs.fromBundle(arguments).idLeague
+        idLeague = DetailLeagueFragmentArgs.fromBundle(arguments).idLeague
         viewmodel.setIdLeague(idLeague)
         initRecyclerView()
         viewLeague()
@@ -75,6 +77,7 @@ class DetailLeagueFragment : Fragment() {
     }
 
     private fun matchFragmentLaunch() {
-
+        val action= DetailLeagueFragmentDirections.actionMatchInfoFragmentLaunch(idLeague.toString())
+        findNavController().navigate(action)
     }
 }

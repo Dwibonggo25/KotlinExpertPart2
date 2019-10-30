@@ -18,4 +18,5 @@ class DetailLeagueViewmodel : ViewModel() {
     fun setIdLeague (id: Int){
         idLeague.set(id.toString())
     }
+
 }

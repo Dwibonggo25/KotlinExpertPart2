@@ -1,8 +1,6 @@
 package com.example.dicodingexpert2.api
 
-import com.example.dicodingexpert2.model.DetailLeagueResponse
-import com.example.dicodingexpert2.model.FootballLeague
-import com.example.dicodingexpert2.model.MatchInfoResponse
+import com.example.dicodingexpert2.model.*
 import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
@@ -19,4 +17,10 @@ interface ApiService {
 
     @GET ("eventsnextleague.php")
     suspend fun fetchEventLeague (@Query ("id") id: String) : MatchInfoResponse
+
+    @GET ("eventspastleague.php")
+    suspend fun fetchPreviousMatch (@Query ("id") id: String) : PreviousMatchResponse
+
+    @GET ("searchevents.php")
+    suspend fun searchFile(@Query("e") e: String): SearchResponse
 }

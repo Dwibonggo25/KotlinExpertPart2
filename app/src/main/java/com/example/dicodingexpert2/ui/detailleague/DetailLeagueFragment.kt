@@ -73,7 +73,8 @@ class DetailLeagueFragment : Fragment() {
     }
 
     private fun previousFragmentLaunch() {
-
+        val action = DetailLeagueFragmentDirections.actionPreviousMatchLaunch(idLeague.toString())
+        findNavController().navigate(action)
     }
 
     private fun matchFragmentLaunch() {

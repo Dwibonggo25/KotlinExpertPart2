@@ -40,7 +40,11 @@
     </fragment>
     <fragment
         android:id="@+id/previousMatchFragment"
-        android:name="com.example.dicodingexpert2.PreviousMatchFragment"
+        android:name="com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment"
         android:label="fragment_previous_match"
-        tools:layout="@layout/fragment_previous_match" />
+        tools:layout="@layout/fragment_previous_match" >
+        <argument
+            android:name="idLeague"
+            app:argType="string" />
+    </fragment>
 </navigation>

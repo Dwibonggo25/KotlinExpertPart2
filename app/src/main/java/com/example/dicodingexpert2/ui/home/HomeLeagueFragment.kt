@@ -7,12 +7,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentHomeLegaueBinding
+import com.example.dicodingexpert2.model.League
+import com.example.dicodingexpert2.utils.Result
 
 
-class HomeLeagueFragment : Fragment(){
+class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener {
 
     private lateinit var viewmodel: HomeLeagueViewmodel
 
@@ -35,29 +38,32 @@ class HomeLeagueFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adapter = HomeFragmentAdapter(this)
+
         initRecyclerView()
         viewListLeague()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search, menu)
-        val searchItem : MenuItem = menu.findItem(R.id.searchMenu)
+        val searchItem: MenuItem = menu.findItem(R.id.searchMenu)
         searchView = searchItem.actionView as SearchView
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-              R.id.searchMenu ->{
-                  searchLeague()
-              }
+        when (item.itemId) {
+            R.id.searchMenu -> {
+                searchLeague()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun searchLeague(){
+    private fun searchLeague() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(text: String?): Boolean {
-                if (text.isNullOrEmpty()){
+                if (text.isNullOrEmpty()) {
                     return false
                 }
                 viewmodel.setText(text!!)
@@ -78,8 +84,8 @@ class HomeLeagueFragment : Fragment(){
         })
     }
 
+
     private fun initRecyclerView() {
-        adapter = HomeFragmentAdapter()
         val layoutmanager = LinearLayoutManager(context)
         binding.rvFootballLeague.layoutManager = layoutmanager
         binding.rvFootballLeague.adapter = adapter
@@ -87,11 +93,27 @@ class HomeLeagueFragment : Fragment(){
 
     private fun viewListLeague() {
         viewmodel.data.observe(this, Observer {
-            adapter.submitList(it.leagues)
+            when (it) {
+                is Result.Success -> {
+                    adapter.submitList(it.data.leagues)
+                    binding.progres.visibility = View.GONE
+                }
+                is Result.Erorr -> {
+                    binding.progres.visibility = View.GONE
+                }
+                is Result.Loading -> {
+                    binding.progres.visibility = View.VISIBLE
+                }
+            }
         })
     }
 
-    private fun viewLeague () {
+    override fun onViewDetailLeague(data: League) {
+        val action = HomeLeagueFragmentDirections.detailLeagueFragmentLaunch(data.idLeague.toInt())
+        findNavController().navigate(action)
+    }
+
+    private fun viewLeague() {
         val adapterSearch = SearchLeagueAdapter()
         binding.lvSearch.adapter = adapterSearch
 

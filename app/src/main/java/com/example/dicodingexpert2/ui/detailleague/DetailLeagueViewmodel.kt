@@ -2,21 +2,28 @@ package com.example.dicodingexpert2.ui.detailleague
 
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.example.dicodingexpert2.api.Api
+import com.example.dicodingexpert2.base.BaseViewmodel
+import com.example.dicodingexpert2.model.DetailLeagueResponse
+import kotlinx.coroutines.Dispatchers
 
-class DetailLeagueViewmodel : ViewModel() {
+class DetailLeagueViewmodel : BaseViewmodel() {
 
-    val idLeague = ObservableField<String>()
+    var idLeague = MutableLiveData <String>()
 
-    val detail = liveData {
-        val data = Api.retrofitService.fetchDetailLeague(idLeague.get()!!)
-        emit(data)
+    var detail = liveData (Dispatchers.Main) {
+        emit(getApiResult {Api.retrofitService.fetchDetailLeague(idLeague.value!!)})
     }
 
-    fun setIdLeague (id: Int){
-        idLeague.set(id.toString())
+    val league = idLeague.switchMap {
+        liveData(context = viewModelScope.coroutineContext + Dispatchers.IO){
+            emit(getApiResult {Api.retrofitService.fetchDetailLeague(idLeague.value!!)})
+        }
+    }
+
+    fun setIdLeague (id: String){
+        idLeague.value = id
     }
 
 }

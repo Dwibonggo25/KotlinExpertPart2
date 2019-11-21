@@ -1,18 +1,16 @@
 package com.example.dicodingexpert2.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dicodingexpert2.databinding.RvListLeagueBinding
 import com.example.dicodingexpert2.model.League
 
-class HomeFragmentAdapter : ListAdapter<League, HomeFragmentAdapter.ViewHolder>(DiffCallback) {
+class HomeFragmentAdapter (private val listener: OnClickListener): ListAdapter<League, HomeFragmentAdapter.ViewHolder>(DiffCallback) {
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position), listener)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -22,22 +20,12 @@ class HomeFragmentAdapter : ListAdapter<League, HomeFragmentAdapter.ViewHolder>(
 
     class ViewHolder(private val binding: RvListLeagueBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            binding.setClicklistener {
-                binding.list?.let {league ->
-                    navigateToDetail (league, it)
-                }
+        fun bind(data: League, listener: OnClickListener) {
+            binding.tvLeagueName.setOnClickListener {
+                listener.onViewDetailLeague(data)
             }
-        }
-
-        private fun navigateToDetail(league: League, it: View) {
-            val action = HomeLeagueFragmentDirections.detailLeagueFragmentLaunch(league.idLeague.toInt())
-            it.findNavController().navigate(action)
-        }
-
-        fun bind(item: League) {
             binding.apply {
-                list = item
+                list = data
                 binding.executePendingBindings()
             }
         }
@@ -53,5 +41,9 @@ class HomeFragmentAdapter : ListAdapter<League, HomeFragmentAdapter.ViewHolder>(
                 return oldItem == newItem
             }
         }
+    }
+
+    interface OnClickListener {
+        fun onViewDetailLeague(data: League)
     }
 }

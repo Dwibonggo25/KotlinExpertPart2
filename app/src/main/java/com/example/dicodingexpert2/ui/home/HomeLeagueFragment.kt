@@ -1,8 +1,10 @@
 package com.example.dicodingexpert2.ui.home
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentHomeLegaueBinding
 import com.example.dicodingexpert2.model.League
+import com.example.dicodingexpert2.model.SearchResponse
 import com.example.dicodingexpert2.utils.Result
 
 
@@ -60,30 +63,37 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun infoMatchNotFound() {
+        binding.rvFootballLeague.visibility = View.VISIBLE
+        binding.lvSearch.visibility = View.GONE
+        Toast.makeText(activity, "Match tidak ditemukan", Toast.LENGTH_SHORT).show()
+    }
+
     private fun searchLeague() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(text: String?): Boolean {
+                viewmodel.setText(text!!)
                 if (text.isNullOrEmpty()) {
+                    infoMatchNotFound()
                     return false
                 }
-                viewmodel.setText(text!!)
                 viewLeague()
                 return true
             }
 
             override fun onQueryTextChange(text: String?): Boolean {
-                if (text.isNullOrEmpty()) {
+                viewmodel.setText(text!!)
+                if (!text.isNullOrEmpty()) {
                     viewLeague()
                     return false
                 }
-                viewmodel.setText(text!!)
-                viewLeague()
+
+                infoMatchNotFound()
                 return true
             }
 
         })
     }
-
 
     private fun initRecyclerView() {
         val layoutmanager = LinearLayoutManager(context)
@@ -113,14 +123,36 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener {
         findNavController().navigate(action)
     }
 
+    private fun noLeagueData () {
+        val adapterSearch = SearchLeagueAdapter()
+        adapterSearch.submitList(null)
+    }
+
     private fun viewLeague() {
         val adapterSearch = SearchLeagueAdapter()
         binding.lvSearch.adapter = adapterSearch
 
         viewmodel.search.observe(this, Observer {
-            adapterSearch.submitList(it.event)
+            when (it) {
+                is Result.Success -> {
+                    validateDataSearch(it)
+                    adapterSearch.submitList(it.data.event)
+                }
+                is Result.Erorr -> {
+                    infoMatchNotFound()
+                }
+            }
         })
     }
 
+    private fun validateDataSearch(it: Result.Success<SearchResponse>) {
+        if (it.data.event.isNullOrEmpty()){
+            binding.rvFootballLeague.visibility = View.VISIBLE
+        }else {
+            binding.lvSearch.visibility = View.VISIBLE
+            binding.rvFootballLeague.visibility = View.GONE
+
+        }
+    }
 
 }

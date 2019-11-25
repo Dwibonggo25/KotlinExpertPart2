@@ -22,19 +22,6 @@ class SearchLeagueAdapter: ListAdapter<EventSearch, SearchLeagueAdapter.ViewHold
 
     class ViewHolder(private val binding: RvItemSearchBinding) : RecyclerView.ViewHolder(binding.root) {
 
-//        init {
-//            binding.setClicklistener {
-//                binding.list?.let {league ->
-//                    navigateToDetail (league, it)
-//                }
-//            }
-//        }
-
-        private fun navigateToDetail(league: EventSearch, it: View) {
-            val action = HomeLeagueFragmentDirections.detailLeagueFragmentLaunch(league.idLeague.toInt())
-            it.findNavController().navigate(action)
-        }
-
         fun bind(item: EventSearch) {
             binding.apply {
                 list = item

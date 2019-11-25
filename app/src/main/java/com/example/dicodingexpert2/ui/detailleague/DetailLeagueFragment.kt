@@ -42,7 +42,6 @@ class DetailLeagueFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         adapter = DetailLeagueAdapter()
 
         idLeague = DetailLeagueFragmentArgs.fromBundle(arguments).idLeague
@@ -61,9 +60,12 @@ class DetailLeagueFragment : Fragment() {
                 }
                 is Result.Erorr -> {
                     Toast.makeText(activity, "Mohon periksa kembali internet anda", Toast.LENGTH_SHORT).show()
+                    binding.rvFootballLeague.visibility = View.GONE
+                    binding.progressBar.visibility = View.GONE
                 }
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.rvFootballLeague.visibility = View.GONE
                 }
             }
         })

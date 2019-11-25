@@ -1,5 +1,6 @@
 package com.example.dicodingexpert2.api
 
+import androidx.lifecycle.LiveData
 import com.example.dicodingexpert2.model.*
 import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
@@ -23,5 +24,5 @@ interface ApiService {
     suspend fun fetchPreviousMatch (@Query ("id") id: String) : PreviousMatchResponse
 
     @GET ("searchevents.php")
-    suspend fun searchFile(@Query("e") e: String): SearchResponse
+    suspend fun searchFile(@Query("e") e: String): Response <SearchResponse>
 }

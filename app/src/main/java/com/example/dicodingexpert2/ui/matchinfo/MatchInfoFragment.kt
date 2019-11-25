@@ -20,6 +20,7 @@ class MatchInfoFragment : Fragment() {
     private lateinit var binding: FragmentMatchInfoBinding
 
     private lateinit var adapter: MatchInfoAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewmodel = ViewModelProviders.of(this).get(MatchInfoViewmodel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_match_info, container, false)
@@ -29,6 +30,8 @@ class MatchInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val idLeague = MatchInfoFragmentArgs.fromBundle(arguments).idLeague
+        viewmodel.settingId(idLeague)
         initRecyclerView()
         viewListLeague()
     }

@@ -9,6 +9,7 @@ buildscript {
         rxandroid_version = '2.1.0'
         lifecycle_component_version = '2.2.0-alpha03'
         gsonVersion = '2.8.2'
+        glide_version = '4.9.0'
     }
     repositories {
         google()

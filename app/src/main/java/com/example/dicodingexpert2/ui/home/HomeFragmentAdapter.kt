@@ -21,7 +21,7 @@ class HomeFragmentAdapter (private val listener: OnClickListener): ListAdapter<L
     class ViewHolder(private val binding: RvListLeagueBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: League, listener: OnClickListener) {
-            binding.tvLeagueName.setOnClickListener {
+            binding.cardViewLeague.setOnClickListener {
                 listener.onViewDetailLeague(data)
             }
             binding.apply {

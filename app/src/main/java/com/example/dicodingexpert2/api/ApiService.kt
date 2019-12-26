@@ -25,4 +25,7 @@ interface ApiService {
 
     @GET ("searchevents.php")
     suspend fun searchFile(@Query("e") e: String): Response <SearchResponse>
+
+    @GET ("lookupleague.php")
+    fun getDetailLeague (@Query (value = "id") id: String ) : Observable <DetailLeagueResponse>
 }

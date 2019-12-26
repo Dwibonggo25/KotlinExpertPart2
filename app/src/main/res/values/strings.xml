@@ -3,4 +3,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="difisi_name">
+        <item>Bundes League</item>
+        <item>Premiere League</item>
+        <item>Seri A</item>
+        <item>Spanish League</item>
+    </string-array>
+    
+    <string-array name="difisi_logo">
+        <item>R.drawable.bundesliga</item>
+        <item>R.drawable.premiere_league</item>
+        <item>R.drawable.seri_a</item>
+        <item>R.drawable.spanish</item>
+    </string-array>
 </resources>

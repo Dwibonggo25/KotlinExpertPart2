@@ -1,6 +1,5 @@
 package com.example.dicodingexpert2.ui.home
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -10,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentHomeLegaueBinding
@@ -96,7 +96,7 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener {
     }
 
     private fun initRecyclerView() {
-        val layoutmanager = LinearLayoutManager(context)
+        var layoutmanager = GridLayoutManager (activity, 2)
         binding.rvFootballLeague.layoutManager = layoutmanager
         binding.rvFootballLeague.adapter = adapter
     }

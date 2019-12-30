@@ -10,7 +10,7 @@
         <item>Seri A</item>
         <item>Spanish League</item>
     </string-array>
-    
+
     <string-array name="difisi_logo">
         <item>R.drawable.bundesliga</item>
         <item>R.drawable.premiere_league</item>

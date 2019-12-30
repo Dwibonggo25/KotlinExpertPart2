@@ -1,4 +1,4 @@
-package com.example.dicodingexpert2.ui.previousmatch
+package com.example.dicodingexpert2.ui.nextmatch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,42 +11,44 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
-import com.example.dicodingexpert2.databinding.FragmentPreviousMatchBinding
-import com.example.dicodingexpert2.model.PreviousMatch
+import com.example.dicodingexpert2.databinding.FragmentNextMatchBinding
+import com.example.dicodingexpert2.model.EventFootball
 import com.example.dicodingexpert2.ui.detailleague.DetailLeagueFragmentDirections
 
-class PreviousMatchFragment : Fragment(), PreviousMatchAdapter.OnClickPreviousListener {
+class NextMatchFragment : Fragment(), NextMatchAdapter.OnMatchClickListener {
 
-    lateinit var viewmodel: PreviousMatchViewmodel
-    lateinit var binding: FragmentPreviousMatchBinding
+    private lateinit var viewmodel: NextMatchViewmodel
 
-    lateinit var adapter: PreviousMatchAdapter
+    private lateinit var binding: FragmentNextMatchBinding
 
-    companion object {
+    private lateinit var adapter: NextMatchAdapter
+
+    companion object{
+
         private var idLeague = ""
-        fun newInstance(id: String) : Fragment {
+
+        fun newInstance(id: String): Fragment {
             idLeague = id
-            return PreviousMatchFragment ()
+            return NextMatchFragment ()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        viewmodel= ViewModelProviders.of(this).get(PreviousMatchViewmodel::class.java)
-        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_previous_match, container, false)
+        viewmodel = ViewModelProviders.of(this).get(NextMatchViewmodel::class.java)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_next_match, container, false)
         binding.executePendingBindings()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewmodel.setIdLeague(idLeague)
+        viewmodel.settingId(idLeague)
         initRecyclerView()
         viewListLeague()
     }
 
     private fun initRecyclerView() {
-        adapter = PreviousMatchAdapter(this)
+        adapter = NextMatchAdapter(this)
         val layoutmanager = LinearLayoutManager(context)
         binding.rvMatchInfo.layoutManager = layoutmanager
         binding.rvMatchInfo.adapter = adapter
@@ -58,7 +60,7 @@ class PreviousMatchFragment : Fragment(), PreviousMatchAdapter.OnClickPreviousLi
         })
     }
 
-    override fun onMatchClick(data: PreviousMatch) {
+    override fun onDetailMacthClick(data: EventFootball) {
         val action = DetailLeagueFragmentDirections.actionDetailMatcFragmentLaunch(data.idEvent)
         findNavController().navigate(action)
     }

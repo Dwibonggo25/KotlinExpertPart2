@@ -10,13 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentHomeLegaueBinding
 import com.example.dicodingexpert2.model.League
 import com.example.dicodingexpert2.model.SearchResponse
 import com.example.dicodingexpert2.utils.Result
-
 
 class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener {
 

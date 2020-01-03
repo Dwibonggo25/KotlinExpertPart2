@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeLegaueFragment">
+
+    <fragment
+        android:id="@+id/homeLegaueFragment"
+        android:name="com.example.dicodingexpert2.ui.home.HomeLeagueFragment"
+        android:label="fragment_home_legaue"
+        tools:layout="@layout/fragment_home_legaue" >
+        <action
+            android:id="@+id/detailLeagueFragmentLaunch"
+            app:destination="@id/detailLeagueFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailLeagueFragment"
+        android:name="com.example.dicodingexpert2.ui.detailleague.DetailLeagueFragment"
+        android:label="fragment_detail_league"
+        tools:layout="@layout/fragment_detail_league" >
+        <argument
+            android:name="idLeague"
+            app:argType="integer" />
+        <action
+            android:id="@+id/actionMatchInfoFragmentLaunch"
+            app:destination="@id/matchInfoFragment" />
+        <action
+            android:id="@+id/actionPreviousMatchLaunch"
+            app:destination="@id/previousMatchFragment" />
+        <action
+            android:id="@+id/actionDetailMatcFragmentLaunch"
+            app:destination="@id/detailMatchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchInfoFragment"
+        android:name="com.example.dicodingexpert2.ui.nextmatch.NextMatchFragment"
+        android:label="fragment_match_info"
+        tools:layout="@layout/fragment_next_match" >
+        <argument
+            android:name="idLeague"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/previousMatchFragment"
+        android:name="com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment"
+        android:label="fragment_previous_match"
+        tools:layout="@layout/fragment_previous_match" >
+        <argument
+            android:name="idLeague"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailMatchFragment"
+        android:name="com.example.dicodingexpert2.ui.detailmatch.DetailMatchFragment"
+        android:label="fragment_detail_match"
+        tools:layout="@layout/fragment_detail_match" >
+        <argument
+            android:name="idMatch"
+            app:argType="string" />
+    </fragment>
+</navigation>

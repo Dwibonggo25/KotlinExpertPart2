@@ -3,9 +3,13 @@ package com.example.dicodingexpert2.base
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.dicodingexpert2.utils.Result
+import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Response
 
 open class BaseViewmodel : ViewModel() {
+
+    val mCompositeDisposable = CompositeDisposable()
+
     suspend fun <T> getApiResult(call: suspend () -> Response<T>): Result<T> {
         try {
 

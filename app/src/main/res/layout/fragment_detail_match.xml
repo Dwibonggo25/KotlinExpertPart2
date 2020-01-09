@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{String.valueOf(vm.detail.intHomeScore)}"
+            android:text="@{vm.detail.intHomeScore == null ? String.valueOf('?') : String.valueOf(vm.detail.intHomeScore) }"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="@{String.valueOf(vm.detail.intAwayScore)}"
+            android:text="@{vm.detail.intAwayScore == null ? String.valueOf('?') : String.valueOf(vm.detail.intAwayScore)}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView17" />
@@ -114,6 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Home Team"
+            android:textSize="16dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textView24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -124,6 +126,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Away Team"
+            android:textSize="16dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView24"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -134,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Kiper"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
@@ -164,31 +169,34 @@
             android:id="@+id/textView27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Defense"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="@+id/textView24"
             app:layout_constraintStart_toStartOf="@+id/textView24"
-            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Midfield"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView31"
             app:layout_constraintEnd_toEndOf="@+id/textView27"
             app:layout_constraintStart_toStartOf="@+id/textView27"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
+            app:layout_constraintTop_toTopOf="@+id/textView31" />
 
         <TextView
             android:id="@+id/textView29"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Forward"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView33"
             app:layout_constraintEnd_toEndOf="@+id/textView28"
             app:layout_constraintStart_toStartOf="@+id/textView28"
-            app:layout_constraintTop_toBottomOf="@+id/textView28" />
+            app:layout_constraintTop_toTopOf="@+id/textView33" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -197,7 +205,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/textView15"
-            app:srcCompat="@drawable/australian_league" />
+            app:srcCompat="@drawable/ic_mu" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -206,7 +214,91 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:srcCompat="@drawable/premiere_league" />
+            app:srcCompat="@drawable/ic_liverpool" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{vm.detail.strHomeLineupDefense}"
+            app:layout_constraintEnd_toStartOf="@+id/textView27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView25"
+            tools:text="Defender" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{vm.detail.strAwayLineupDefense}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView27"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView27"
+            app:layout_constraintTop_toTopOf="@+id/textView27"
+            tools:text="Defender" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{vm.detail.strHomeLineupMidfield}"
+            app:layout_constraintEnd_toStartOf="@+id/textView28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="Midfield" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{vm.detail.strAwayLineupMidfield}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView28"
+            app:layout_constraintTop_toTopOf="@+id/textView28"
+            tools:text="Midfield" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{vm.detail.strHomeLineupForward}"
+            app:layout_constraintEnd_toStartOf="@+id/textView29"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            tools:text="Forward" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{vm.detail.strAwayLineupForward}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView29"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView29"
+            app:layout_constraintTop_toTopOf="@+id/textView29"
+            tools:text="Forward" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

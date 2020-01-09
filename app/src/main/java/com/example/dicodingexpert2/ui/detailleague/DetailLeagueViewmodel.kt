@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.dicodingexpert2.api.Api
 import com.example.dicodingexpert2.base.BaseViewmodel
 import com.example.dicodingexpert2.model.LeagueDetail
+import com.example.dicodingexpert2.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -18,7 +19,6 @@ class DetailLeagueViewmodel : BaseViewmodel() {
 
     var detail = ObservableField <LeagueDetail> ()
 
-    private val mCompositeDisposable = CompositeDisposable()
 
     private val _isDetailLeague = MutableLiveData<com.example.dicodingexpert2.utils.Result<LeagueDetail>>()
     val isDetailLeague : LiveData <com.example.dicodingexpert2.utils.Result<LeagueDetail>>
@@ -52,9 +52,6 @@ class DetailLeagueViewmodel : BaseViewmodel() {
 
 }
 
-operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
-    add(disposable)
-}
 //    val test = liveData <DetailLeagueResponse>(context = viewModelScope.coroutineContext + Dispatchers.IO){
 //        val dispos = emitSource(
 //            Api.retrofitService.fetchDetailLeague(idLeague.value!!).map {

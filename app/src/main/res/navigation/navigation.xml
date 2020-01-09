@@ -13,6 +13,9 @@
         <action
             android:id="@+id/detailLeagueFragmentLaunch"
             app:destination="@id/detailLeagueFragment" />
+        <action
+            android:id="@+id/detailMatchFragmentLaunch"
+            app:destination="@id/detailMatchFragment" />
     </fragment>
 
     <fragment

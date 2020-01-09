@@ -137,7 +137,7 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener {
                     adapterSearch.submitList(it.data.event)
                 }
                 is Result.Erorr -> {
-                    infoMatchNotFound()
+
                 }
             }
         })

@@ -80,6 +80,7 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener, Sear
 
             override fun onQueryTextChange(text: String?): Boolean {
                 if (text.isNullOrEmpty()) {
+                    infoMatchNotFound()
                     return false
                 }
                 viewmodel.setText(text)
@@ -96,7 +97,11 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener, Sear
             when (it) {
                 is Result.Success -> {
                     validateDataSearch(it)
-                    transformData(it.data.event)
+                    if (it.data.event.isNullOrEmpty()){
+                        infoMatchNotFound()
+                    }else {
+                        transformData(it.data.event)
+                    }
                 }
                 is Result.Erorr -> {
                     infoMatchNotFound()

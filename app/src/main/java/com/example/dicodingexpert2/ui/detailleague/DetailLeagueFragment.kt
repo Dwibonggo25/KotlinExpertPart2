@@ -30,7 +30,6 @@ class DetailLeagueFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_league, container, false)
         binding.vm = viewmodel
         binding.executePendingBindings()
-
         return binding.root
     }
 

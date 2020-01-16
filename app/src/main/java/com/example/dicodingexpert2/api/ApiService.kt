@@ -31,4 +31,8 @@ interface ApiService {
 
     @GET ("lookupevent.php")
     fun fetchDetailMatch (@Query (value = "id") id: String) : Observable <DetailMatchResponse>
+
+    @GET ("lookupteam.php")
+    fun fetchLogoTeam (@Query(value = "id") id: String) : Observable <TeamLogoResponse>
+
 }

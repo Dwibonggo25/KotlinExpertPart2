@@ -1,5 +1,6 @@
 package com.example.dicodingexpert2.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,11 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dicodingexpert2.databinding.RvListLeagueBinding
 import com.example.dicodingexpert2.model.League
-import android.R.id
-import android.content.Context
-import android.graphics.drawable.Drawable
-
-
 
 class HomeFragmentAdapter (private val listener: OnClickListener, private val context: Context?): ListAdapter<League, HomeFragmentAdapter.ViewHolder>(DiffCallback) {
 

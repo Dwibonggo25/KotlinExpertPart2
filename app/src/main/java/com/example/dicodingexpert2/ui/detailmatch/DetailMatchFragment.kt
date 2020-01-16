@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentDetailMatchBinding
+import com.example.dicodingexpert2.utils.Result
 
 class DetailMatchFragment : Fragment() {
 
@@ -30,5 +32,7 @@ class DetailMatchFragment : Fragment() {
 
         val idEvent = DetailMatchFragmentArgs.fromBundle(arguments).idMatch
         viewModel.fetchDetailMatch(idEvent)
+
+
     }
 }

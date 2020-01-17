@@ -22,6 +22,10 @@ class NextMatchAdapter (private val listener: OnMatchClickListener) : ListAdapte
 
         fun bind(item: EventFootball) {
 
+            binding.ivFavorite.setOnClickListener {
+
+            }
+
             binding.clNextMatch.setOnClickListener {
                 listener.onDetailMacthClick(item)
             }

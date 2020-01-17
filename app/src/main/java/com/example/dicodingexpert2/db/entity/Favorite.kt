@@ -2,10 +2,12 @@ package com.example.dicodingexpert2.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity (tableName = "favorite")
 data class Favorite (
 
+    @PrimaryKey
     @ColumnInfo(name = "id")
     var id: String,
 

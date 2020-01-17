@@ -33,6 +33,5 @@ class DetailMatchFragment : Fragment() {
         val idEvent = DetailMatchFragmentArgs.fromBundle(arguments).idMatch
         viewModel.fetchDetailMatch(idEvent)
 
-
     }
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvHomeTeam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="right"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeTeam"
+            app:layout_constraintEnd_toStartOf="@+id/ivHomeTeam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeTeam" />
+
+        <ImageView
+            android:id="@+id/ivHomeTeam"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/tvScoreHomeTeam"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bundesliga" />
+
+        <TextView
+            android:id="@+id/tvScoreHomeTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeTeam"
+            app:layout_constraintEnd_toStartOf="@+id/textView38"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeTeam" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeTeam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeTeam" />
+
+        <TextView
+            android:id="@+id/tvScoreAwayTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="@+id/ivAwayTeam"
+            app:layout_constraintStart_toEndOf="@+id/textView38"
+            app:layout_constraintTop_toTopOf="@+id/ivAwayTeam" />
+
+        <ImageView
+            android:id="@+id/ivAwayTeam"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/tvScoreAwayTeam"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bundesliga" />
+
+        <TextView
+            android:id="@+id/tvAwayTeam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/ivAwayTeam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivAwayTeam"
+            app:layout_constraintTop_toTopOf="@+id/ivAwayTeam" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivAwayTeam"
+            app:srcCompat="@drawable/ic_delete" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

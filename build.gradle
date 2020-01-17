@@ -10,6 +10,7 @@ buildscript {
         lifecycle_component_version = '2.2.0-alpha03'
         gsonVersion = '2.8.2'
         glide_version = '4.9.0'
+        room_version = "2.2.2"
     }
     repositories {
         google()

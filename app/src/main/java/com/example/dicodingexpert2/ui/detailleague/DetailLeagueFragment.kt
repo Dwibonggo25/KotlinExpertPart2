@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentDetailLeagueBinding
+import com.example.dicodingexpert2.ui.favorite.FavoriteFragment
 import com.example.dicodingexpert2.ui.nextmatch.NextMatchFragment
 import com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment
 import com.example.dicodingexpert2.utils.Result
@@ -30,7 +31,6 @@ class DetailLeagueFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_league, container, false)
         binding.vm = viewmodel
         binding.executePendingBindings()
-
         return binding.root
     }
 
@@ -82,6 +82,7 @@ class DetailLeagueFragment : Fragment() {
             when (position) {
                 0 -> tab.setText("Next Match")
                 1 -> tab.setText("Preview Match")
+                2 -> tab.setText("Favorite Match")
             }
         }.attach()
     }
@@ -90,12 +91,13 @@ class DetailLeagueFragment : Fragment() {
 
         var id = idLeague
 
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = 3
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 ->  NextMatchFragment.newInstance(id)
-                else -> PreviousMatchFragment.newInstance(id)
+                1 -> PreviousMatchFragment.newInstance(id)
+                else -> FavoriteFragment.newInstance()
             }
         }
     }

@@ -92,7 +92,7 @@
                     android:layout_marginEnd="16dp"
                     android:text="?"
                     android:textSize="15dp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                    app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
                     app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
                 <TextView
@@ -103,7 +103,7 @@
                     android:text="?"
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvAwayTeam"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView5" />
+                    app:layout_constraintEnd_toStartOf="@+id/ivFavorite" />
 
                 <ImageView
                     android:id="@+id/ivFavorite"

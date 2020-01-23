@@ -22,49 +22,49 @@ data class EventFootball(
     @SerializedName("idLeague")
     val idLeague: String,
     @SerializedName("idSoccerXML")
-    val idSoccerXML: Any,
+    val idSoccerXML: String,
     @SerializedName("intAwayScore")
-    val intAwayScore: Any,
+    val intAwayScore: String,
     @SerializedName("intAwayShots")
-    val intAwayShots: Any,
+    val intAwayShots: String,
     @SerializedName("intHomeScore")
-    val intHomeScore: Any,
+    val intHomeScore: String,
     @SerializedName("intHomeShots")
-    val intHomeShots: Any,
+    val intHomeShots: String,
     @SerializedName("intRound")
     val intRound: String,
     @SerializedName("intSpectators")
-    val intSpectators: Any,
+    val intSpectators: String,
     @SerializedName("strAwayFormation")
-    val strAwayFormation: Any,
+    val strAwayFormation: String,
     @SerializedName("strAwayGoalDetails")
-    val strAwayGoalDetails: Any,
+    val strAwayGoalDetails: String,
     @SerializedName("strAwayLineupDefense")
-    val strAwayLineupDefense: Any,
+    val strAwayLineupDefense: String,
     @SerializedName("strAwayLineupForward")
-    val strAwayLineupForward: Any,
+    val strAwayLineupForward: String,
     @SerializedName("strAwayLineupGoalkeeper")
-    val strAwayLineupGoalkeeper: Any,
+    val strAwayLineupGoalkeeper: String,
     @SerializedName("strAwayLineupMidfield")
-    val strAwayLineupMidfield: Any,
+    val strAwayLineupMidfield: String,
     @SerializedName("strAwayLineupSubstitutes")
-    val strAwayLineupSubstitutes: Any,
+    val strAwayLineupSubstitutes: String,
     @SerializedName("strAwayRedCards")
-    val strAwayRedCards: Any,
+    val strAwayRedCards: String,
     @SerializedName("strAwayTeam")
     val strAwayTeam: String,
     @SerializedName("strAwayYellowCards")
-    val strAwayYellowCards: Any,
+    val strAwayYellowCards: String,
     @SerializedName("strBanner")
-    val strBanner: Any,
+    val strBanner: String,
     @SerializedName("strCircuit")
-    val strCircuit: Any,
+    val strCircuit: String,
     @SerializedName("strCity")
-    val strCity: Any,
+    val strCity: String,
     @SerializedName("strCountry")
-    val strCountry: Any,
+    val strCountry: String,
     @SerializedName("strDate")
-    val strDate: Any,
+    val strDate: String,
     @SerializedName("strDescriptionEN")
     val strDescriptionEN: String,
     @SerializedName("strEvent")
@@ -72,37 +72,37 @@ data class EventFootball(
     @SerializedName("strEventAlternate")
     val strEventAlternate: String,
     @SerializedName("strFanart")
-    val strFanart: Any,
+    val strFanart: String,
     @SerializedName("strFilename")
     val strFilename: String,
     @SerializedName("strHomeFormation")
-    val strHomeFormation: Any,
+    val strHomeFormation: String,
     @SerializedName("strHomeGoalDetails")
-    val strHomeGoalDetails: Any,
+    val strHomeGoalDetails: String,
     @SerializedName("strHomeLineupDefense")
-    val strHomeLineupDefense: Any,
+    val strHomeLineupDefense: String,
     @SerializedName("strHomeLineupForward")
-    val strHomeLineupForward: Any,
+    val strHomeLineupForward: String,
     @SerializedName("strHomeLineupGoalkeeper")
-    val strHomeLineupGoalkeeper: Any,
+    val strHomeLineupGoalkeeper: String,
     @SerializedName("strHomeLineupMidfield")
-    val strHomeLineupMidfield: Any,
+    val strHomeLineupMidfield: String,
     @SerializedName("strHomeLineupSubstitutes")
-    val strHomeLineupSubstitutes: Any,
+    val strHomeLineupSubstitutes: String,
     @SerializedName("strHomeRedCards")
-    val strHomeRedCards: Any,
+    val strHomeRedCards: String,
     @SerializedName("strHomeTeam")
     val strHomeTeam: String,
     @SerializedName("strHomeYellowCards")
-    val strHomeYellowCards: Any,
+    val strHomeYellowCards: String,
     @SerializedName("strLeague")
     val strLeague: String,
     @SerializedName("strLocked")
     val strLocked: String,
     @SerializedName("strMap")
-    val strMap: Any,
+    val strMap: String,
     @SerializedName("strPoster")
-    val strPoster: Any,
+    val strPoster: String,
     @SerializedName("strResult")
     val strResult: String,
     @SerializedName("strSeason")
@@ -110,7 +110,7 @@ data class EventFootball(
     @SerializedName("strSport")
     val strSport: String,
     @SerializedName("strTVStation")
-    val strTVStation: Any,
+    val strTVStation: String,
     @SerializedName("strThumb")
     val strThumb: String,
     @SerializedName("strTime")

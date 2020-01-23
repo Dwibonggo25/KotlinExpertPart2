@@ -15,17 +15,17 @@ data class Favorite (
     val homeTeam: String,
 
     @ColumnInfo(name = "logo_home_team")
-    val logoHomeTeam: String,
+    val logoHomeTeam: String?,
 
     @ColumnInfo(name = "score_home_team")
-    val scoreHomeTeam: String,
+    val scoreHomeTeam: String?,
 
     @ColumnInfo(name = "away_team")
-    val awayTeam: String,
+    val awayTeam: String?,
 
     @ColumnInfo(name = "logo_away_team")
-    val logoAwayTeam: String,
+    val logoAwayTeam: String?,
 
     @ColumnInfo(name = "score_away_team")
-    val scoreAwayTeam: String
+    val scoreAwayTeam: String?
 )

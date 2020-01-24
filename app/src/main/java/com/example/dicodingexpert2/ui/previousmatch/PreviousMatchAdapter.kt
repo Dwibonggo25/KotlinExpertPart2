@@ -26,6 +26,10 @@ class PreviousMatchAdapter (private var listener: OnClickPreviousListener): List
                 listener.onMatchClick(item)
             }
 
+            binding.ivFavorite.setOnClickListener {
+                listener.onFavoriteClicked(item)
+            }
+
             binding.apply {
                 list = item
                 binding.executePendingBindings()
@@ -47,5 +51,6 @@ class PreviousMatchAdapter (private var listener: OnClickPreviousListener): List
 
     interface OnClickPreviousListener {
         fun onMatchClick (data: PreviousMatch)
+        fun onFavoriteClicked (data: PreviousMatch)
     }
 }

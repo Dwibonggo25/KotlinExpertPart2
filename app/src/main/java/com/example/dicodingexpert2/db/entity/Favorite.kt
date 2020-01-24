@@ -27,5 +27,9 @@ data class Favorite (
     val logoAwayTeam: String?,
 
     @ColumnInfo(name = "score_away_team")
-    val scoreAwayTeam: String?
+    val scoreAwayTeam: String?,
+
+    @ColumnInfo(name = "league")
+    val league: String
+
 )

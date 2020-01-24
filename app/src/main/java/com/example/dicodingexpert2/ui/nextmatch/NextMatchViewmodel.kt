@@ -58,7 +58,7 @@ class NextMatchViewmodel(application: Context) : BaseViewmodel() {
     }
 
     private fun saveInfavoriteDatabase(event: EventFootball) {
-        val data = Favorite(event.idEvent, event.strHomeTeam, logoHomeTeam.get(), event.intHomeScore, event.strAwayTeam, logoAwayTeam.get(), event.intAwayScore)
+        val data = Favorite(event.idEvent, event.strHomeTeam, logoHomeTeam.get(), event.intHomeScore, event.strAwayTeam, logoAwayTeam.get(), event.intAwayScore, event.strLeague)
         mCompositeDisposable += repository!!.favoriteDao().insertToFavorite(data)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

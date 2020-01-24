@@ -35,6 +35,9 @@
         <action
             android:id="@+id/actionDetailMatcFragmentLaunch"
             app:destination="@id/detailMatchFragment" />
+        <action
+            android:id="@+id/actionFavoriteFragmentLaunch"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/matchInfoFragment"

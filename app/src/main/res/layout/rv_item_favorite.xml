@@ -17,7 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +31,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_50">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/teal_100"
+                    android:drawableRight="@drawable/ic_cevron_right"
+                    android:gravity="right"
+                    android:paddingTop="4dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="4dp"
+                    android:text="@{list.league}"
+                    android:textColor="@color/cardview_light_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvHomeTeam"
@@ -45,13 +64,13 @@
 
                 <ImageView
                     android:id="@+id/ivHomeTeam"
+                    imageFromUrl="@{list.logoHomeTeam}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    imageFromUrl="@{list.logoHomeTeam}"
                     app:layout_constraintEnd_toStartOf="@+id/tvScoreHomeTeam"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDate"
                     tools:srcCompat="@drawable/bundesliga" />
 
                 <TextView
@@ -60,10 +79,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:text="@{list.scoreHomeTeam}"
-                    tools:text="1"
                     app:layout_constraintBottom_toBottomOf="@+id/ivHomeTeam"
                     app:layout_constraintEnd_toStartOf="@+id/textView38"
-                    app:layout_constraintTop_toTopOf="@+id/ivHomeTeam" />
+                    app:layout_constraintTop_toTopOf="@+id/ivHomeTeam"
+                    tools:text="1" />
 
                 <TextView
                     android:id="@+id/textView38"
@@ -81,20 +100,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@{list.scoreAwayTeam}"
-                    tools:text="1"
                     app:layout_constraintBottom_toBottomOf="@+id/ivAwayTeam"
                     app:layout_constraintStart_toEndOf="@+id/textView38"
-                    app:layout_constraintTop_toTopOf="@+id/ivAwayTeam" />
+                    app:layout_constraintTop_toTopOf="@+id/ivAwayTeam"
+                    tools:text="1" />
 
                 <ImageView
                     android:id="@+id/ivAwayTeam"
+                    imageFromUrl="@{list.logoAwayTeam}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    imageFromUrl="@{list.logoAwayTeam}"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintStart_toEndOf="@+id/tvScoreAwayTeam"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDate"
                     app:srcCompat="@drawable/bundesliga" />
 
                 <TextView

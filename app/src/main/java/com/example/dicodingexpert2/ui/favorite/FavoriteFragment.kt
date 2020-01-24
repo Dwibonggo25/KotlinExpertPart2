@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentFavoriteBinding
 import com.example.dicodingexpert2.db.entity.Favorite
+import com.example.dicodingexpert2.ui.detailleague.DetailLeagueFragmentDirections
 import com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment
 import com.example.dicodingexpert2.utils.ViewModelFactory
 
@@ -69,7 +71,8 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnFavoriteClickListener {
     }
 
     override fun onDetailMacthClick(data: Favorite) {
-        
+        val action = DetailLeagueFragmentDirections.actionDetailMatcFragmentLaunch(data.id)
+        findNavController().navigate(action)
     }
 
     override fun onDeleteFavoriteSelected(data: Favorite) {

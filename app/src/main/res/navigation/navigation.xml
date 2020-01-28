@@ -67,6 +67,7 @@
             android:name="idMatch"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.dicodingexpert2.ui.favorite.FavoriteFragment"

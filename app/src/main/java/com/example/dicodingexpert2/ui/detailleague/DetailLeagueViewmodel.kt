@@ -19,7 +19,6 @@ class DetailLeagueViewmodel : BaseViewmodel() {
 
     var detail = ObservableField <LeagueDetail> ()
 
-
     private val _isDetailLeague = MutableLiveData<com.example.dicodingexpert2.utils.Result<LeagueDetail>>()
     val isDetailLeague : LiveData <com.example.dicodingexpert2.utils.Result<LeagueDetail>>
         get() = _isDetailLeague

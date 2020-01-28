@@ -5,6 +5,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.dicodingexpert2.api.Api
+import com.example.dicodingexpert2.api.ApiService
 import com.example.dicodingexpert2.base.BaseViewmodel
 import com.example.dicodingexpert2.model.DetailMatchEvent
 import com.example.dicodingexpert2.model.DetailMatchResponse
@@ -13,7 +14,7 @@ import com.example.dicodingexpert2.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class DetailMatchViewModel : BaseViewmodel() {
+class DetailMatchViewModel (private var apiService: ApiService): BaseViewmodel() {
 
     val detail = ObservableField <DetailMatchEvent>()
 
@@ -23,7 +24,7 @@ class DetailMatchViewModel : BaseViewmodel() {
     val isLoading = ObservableBoolean ()
 
     fun fetchDetailMatch (id : String) {
-        mCompositeDisposable += Api.retrofitService.fetchDetailMatch(id)
+        mCompositeDisposable += apiService.fetchDetailMatch(id)
             .doOnSubscribe { isLoading.set(true) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

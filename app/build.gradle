@@ -97,4 +97,9 @@ dependencies {
 
     //rxjava for room
     implementation "androidx.room:room-rxjava2:$room_version"
+
+    testImplementation "org.mockito:mockito-inline:3.0.0"
+
+    //testing mutablelivedata
+    testImplementation 'android.arch.core:core-testing:1.0.0-alpha3'
 }

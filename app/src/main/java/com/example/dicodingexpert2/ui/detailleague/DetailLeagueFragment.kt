@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.dicodingexpert2.R
+import com.example.dicodingexpert2.api.Api
 import com.example.dicodingexpert2.databinding.FragmentDetailLeagueBinding
 import com.example.dicodingexpert2.ui.favorite.FavoriteFragment
 import com.example.dicodingexpert2.ui.nextmatch.NextMatchFragment
 import com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment
 import com.example.dicodingexpert2.utils.Result
+import com.example.dicodingexpert2.utils.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailLeagueFragment : Fragment() {
@@ -23,11 +26,14 @@ class DetailLeagueFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailLeagueBinding
 
+    private lateinit var viewModelFactory : ViewModelProvider.Factory
+
     var idLeague : Int= 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewmodel = ViewModelProviders.of(activity!!).get(DetailLeagueViewmodel::class.java)
+        viewModelFactory = ViewModelFactory {DetailLeagueViewmodel(Api.retrofitService)}
+        viewmodel = ViewModelProviders.of(activity!!, viewModelFactory).get(DetailLeagueViewmodel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_league, container, false)
         binding.vm = viewmodel
         binding.executePendingBindings()
@@ -39,7 +45,7 @@ class DetailLeagueFragment : Fragment() {
 
         idLeague = DetailLeagueFragmentArgs.fromBundle(arguments).idLeague
         viewmodel.setIdLeague(idLeague.toString())
-        viewmodel.getDetailLeague()
+        viewmodel.getDetailLeague(idLeague.toString())
 
         viewmodel.isDetailLeague.observe(this, Observer {
             it?.let {

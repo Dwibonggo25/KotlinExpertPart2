@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.dicodingexpert2.api.Api
+import com.example.dicodingexpert2.api.ApiService
 import com.example.dicodingexpert2.base.BaseViewmodel
 import com.example.dicodingexpert2.db.DicodingDb
 import com.example.dicodingexpert2.db.entity.Favorite
@@ -15,7 +16,7 @@ import com.example.dicodingexpert2.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class NextMatchViewmodel(application: Context) : BaseViewmodel() {
+class NextMatchViewmodel(repository: DicodingDb, private val api: ApiService) : BaseViewmodel() {
 
     val idLeague = ObservableField<String>()
 
@@ -28,10 +29,6 @@ class NextMatchViewmodel(application: Context) : BaseViewmodel() {
     private var _isMessage = MutableLiveData<String>()
     val isMessage : LiveData <String>
         get() = _isMessage
-
-    init {
-        repository = DicodingDb.getInstance(application.applicationContext)
-    }
 
     val data = liveData {
         val event = Api.retrofitService.fetchEventLeague(idLeague.get()!!)
@@ -68,7 +65,7 @@ class NextMatchViewmodel(application: Context) : BaseViewmodel() {
     }
 
     fun fetchLogoAwayTeam(event: EventFootball) {
-        mCompositeDisposable += Api.retrofitService.fetchLogoTeam(event.idAwayTeam)
+        mCompositeDisposable += api.fetchLogoTeam(event.idAwayTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

@@ -36,7 +36,7 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.OnFavoriteClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewModelFactory = ViewModelFactory(activity!!)
+        viewModelFactory = ViewModelFactory{FavoriteViewModel(activity!!)}
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_favorite, container, false)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(FavoriteViewModel::class.java)
         binding.executePendingBindings()

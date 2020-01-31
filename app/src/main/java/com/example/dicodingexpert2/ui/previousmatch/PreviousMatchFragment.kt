@@ -13,7 +13,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingexpert2.R
+import com.example.dicodingexpert2.api.Api
 import com.example.dicodingexpert2.databinding.FragmentPreviousMatchBinding
+import com.example.dicodingexpert2.db.DicodingDb
 import com.example.dicodingexpert2.model.PreviousMatch
 import com.example.dicodingexpert2.ui.detailleague.DetailLeagueFragmentDirections
 import com.example.dicodingexpert2.utils.ViewModelFactory
@@ -21,6 +23,7 @@ import com.example.dicodingexpert2.utils.ViewModelFactory
 class PreviousMatchFragment : Fragment(), PreviousMatchAdapter.OnClickPreviousListener {
 
     lateinit var viewmodel: PreviousMatchViewmodel
+
     lateinit var binding: FragmentPreviousMatchBinding
 
     lateinit var adapter: PreviousMatchAdapter
@@ -37,7 +40,8 @@ class PreviousMatchFragment : Fragment(), PreviousMatchAdapter.OnClickPreviousLi
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewModelFactory = ViewModelFactory(activity!!)
+        val repository = DicodingDb.getInstance(activity!!.applicationContext)
+        viewModelFactory = ViewModelFactory{PreviousMatchViewmodel(repository!!, Api.retrofitService)}
 
         viewmodel= ViewModelProviders.of(this, viewModelFactory).get(PreviousMatchViewmodel::class.java)
         binding= DataBindingUtil.inflate(inflater, R.layout.fragment_previous_match, container, false)

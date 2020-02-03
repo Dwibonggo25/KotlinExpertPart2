@@ -29,7 +29,7 @@ class PreviousMatchViewmodel (private val repository: DicodingDb, private val ap
     val id= ObservableField<String>()
 
     val data= liveData {
-        val match = Api.retrofitService.fetchPreviousMatch(id.get()!!)
+        val match = api.fetchPreviousMatch(id.get()!!)
         emit(match)
     }
 
@@ -39,7 +39,7 @@ class PreviousMatchViewmodel (private val repository: DicodingDb, private val ap
 
 
     fun fetchLogoHomeTeam(event: PreviousMatch)  {
-        mCompositeDisposable += Api.retrofitService.fetchLogoTeam(event.idHomeTeam)
+        mCompositeDisposable += api.fetchLogoTeam(event.idHomeTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -53,7 +53,7 @@ class PreviousMatchViewmodel (private val repository: DicodingDb, private val ap
     }
 
     fun fetchLogoAwayTeam(event: PreviousMatch) {
-        mCompositeDisposable += Api.retrofitService.fetchLogoTeam(event.idAwayTeam)
+        mCompositeDisposable += api.fetchLogoTeam(event.idAwayTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

@@ -29,7 +29,16 @@ object FakeData {
     }
 
     fun fakeDataPreviousMatch(): List<PreviousMatch> {
-        return listOf()
+        return listOf(
+            PreviousMatch("22-10-2022","22-10-2022","474747","47474747","","","",
+                "","","","","","","",
+                "","","","","","",
+                "","","","","","","",
+                "","","","","","","",
+                "","","","","","","",
+                "","","","","","","",
+                "","","","","","","",
+                "","",""))
     }
 
     fun fakeDataDetailMatch(): List<DetailMatchEvent> {

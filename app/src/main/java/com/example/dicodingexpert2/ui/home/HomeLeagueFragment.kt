@@ -7,15 +7,19 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dicodingexpert2.R
+import com.example.dicodingexpert2.api.Api
+import com.example.dicodingexpert2.api.ApiService
 import com.example.dicodingexpert2.databinding.FragmentHomeLegaueBinding
 import com.example.dicodingexpert2.model.EventSearch
 import com.example.dicodingexpert2.model.League
 import com.example.dicodingexpert2.model.SearchResponse
 import com.example.dicodingexpert2.utils.Result
+import com.example.dicodingexpert2.utils.ViewModelFactory
 
 class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener, SearchLeagueAdapter.OnSearchClickListener {
 
@@ -25,10 +29,13 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener, Sear
 
     private lateinit var adapter: HomeFragmentAdapter
 
+    private lateinit var viewModelFactory: ViewModelProvider.Factory
+
     lateinit var searchView: SearchView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        viewModelFactory = ViewModelFactory{HomeLeagueViewmodel(Api.retrofitService)}
         viewmodel = ViewModelProviders.of(activity!!).get(HomeLeagueViewmodel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_legaue, container, false)
         binding.vm = viewmodel

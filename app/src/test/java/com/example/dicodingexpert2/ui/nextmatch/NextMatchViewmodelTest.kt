@@ -1,6 +1,5 @@
 package com.example.dicodingexpert2.ui.nextmatch
 
-import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.dicodingexpert2.RxImmediateSchedulerRule
 import com.example.dicodingexpert2.api.ApiService
@@ -13,14 +12,12 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith (MockitoJUnitRunner::class)
+@RunWith(MockitoJUnitRunner::class)
 class NextMatchViewmodelTest {
 
     var fakeData = FakeData.fakeDataNextMatch()[0]
@@ -42,17 +39,23 @@ class NextMatchViewmodelTest {
     private lateinit var db: DicodingDb
 
     @Before
-    fun setUp(){
+    fun setUp() {
         MockitoAnnotations.initMocks(this)
         viewmodel = NextMatchViewmodel(db, api)
     }
 
-    var data =  TeamLogoResponse(listOf( Team("22-10-2022","22-10-2022","474747","47474747","","")))
+    var data =
+        TeamLogoResponse(listOf(Team("22-10-2022", "22-10-2022", "474747", "47474747", "", "")))
 
     @Test
-    fun fetchLogoHomeTeam(){
+    fun fetchLogoHomeTeam() {
         Mockito.`when`(api.fetchLogoTeam(fakeData.idHomeTeam)).thenReturn(Observable.just(data))
         viewmodel.fetchLogoHomeTeam(fakeData)
     }
 
+    @Test
+    fun fetchLogoAwayTeam() {
+        Mockito.`when`(api.fetchLogoTeam(fakeData.idAwayTeam)).thenReturn(Observable.just(data))
+        viewmodel.fetchLogoAwayTeam(fakeData)
+    }
 }

@@ -44,7 +44,7 @@ class NextMatchFragment : Fragment(), NextMatchAdapter.OnMatchClickListener {
 
         val repository = DicodingDb.getInstance(activity!!.applicationContext)
         viewModelFactory = ViewModelFactory{NextMatchViewmodel(repository!!, Api.retrofitService)}
-        viewmodel = ViewModelProviders.of(this, viewModelFactory).get(NextMatchViewmodel::class.java)
+        viewmodel = ViewModelProvider(this, viewModelFactory).get(NextMatchViewmodel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_next_match, container, false)
         binding.executePendingBindings()
         return binding.root

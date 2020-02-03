@@ -5,15 +5,16 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import com.example.dicodingexpert2.api.Api
+import com.example.dicodingexpert2.api.ApiService
 import com.example.dicodingexpert2.base.BaseViewmodel
 import kotlinx.coroutines.Dispatchers
 
-class HomeLeagueViewmodel : BaseViewmodel() {
+class HomeLeagueViewmodel (private val api: ApiService) : BaseViewmodel() {
 
     val searchText = MutableLiveData<String>()
 
     val data = liveData(Dispatchers.IO) {
-        val league = getApiResult { Api.retrofitService.getAllData() }
+        val league = getApiResult { api.getAllData() }
         emit(league)
     }
 
@@ -22,7 +23,7 @@ class HomeLeagueViewmodel : BaseViewmodel() {
             if (searchText.value.isNullOrEmpty()) {
                 emit(null)
             } else {
-                emit(getApiResult { Api.retrofitService.searchFile(searchText.value!!) })
+                emit(getApiResult { api.searchFile(searchText.value!!) })
             }
         }
     }

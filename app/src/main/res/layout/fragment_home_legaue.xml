@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+
         <variable
             name="vm"
             type="com.example.dicodingexpert2.ui.home.HomeLeagueViewmodel" />

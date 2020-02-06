@@ -70,7 +70,7 @@ class HomeLeagueFragment : Fragment(), HomeFragmentAdapter.OnClickListener, Sear
     }
 
     private fun infoMatchNotFound() {
-        binding.lvSearch.visibility = View.GONE
+      //  binding.lvSearch.visibility = View.GONE
         Toast.makeText(activity, "Match tidak ditemukan", Toast.LENGTH_SHORT).show()
     }
 

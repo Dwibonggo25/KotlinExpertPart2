@@ -98,27 +98,29 @@ dependencies {
     //rxjava for room
     implementation "androidx.room:room-rxjava2:$room_version"
 
-    testImplementation "org.mockito:mockito-inline:3.0.0"
+    // Dependencies for Mockito
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoTestVersion"
 
     //testing mutablelivedata
-    testImplementation 'android.arch.core:core-testing:1.0.0-alpha3'
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
 
     // Required for instrumented tests
-    androidTestImplementation 'com.android.support:support-annotations:24.0.0'
+    androidTestImplementation 'androidx.annotation:annotation:1.0.0'
 
     //Instrument Testing
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:2.2.2") {
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.1.0') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
-
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+    testImplementation "android.arch.core:core-testing:$core_testing_version"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }

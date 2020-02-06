@@ -12,6 +12,9 @@ buildscript {
         glide_version = '4.9.0'
         room_version = "2.2.2"
         fragment_version = "1.2.0"
+        mockitoVersion = '3.0.0'
+        mockitoTestVersion = '3.2.4'
+        core_testing_version = '1.1.1'
     }
     repositories {
         google()

@@ -16,7 +16,7 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/stringName"
+            android:id="@+id/tvEventName"
             style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,13 +33,13 @@
             tools:text="Event" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/tvDateEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@{list.dateEvent}"
-            app:layout_constraintStart_toStartOf="@+id/stringName"
-            app:layout_constraintTop_toBottomOf="@+id/stringName"
+            app:layout_constraintStart_toStartOf="@+id/tvEventName"
+            app:layout_constraintTop_toBottomOf="@+id/tvEventName"
             tools:text="Date" />
 
         <View
@@ -49,7 +49,7 @@
             android:layout_marginBottom="4dp"
             android:background="@color/teal_100"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView35"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateEvent"
             tools:layout_editor_absoluteX="-16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

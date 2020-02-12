@@ -13,7 +13,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.api.Api
 import com.example.dicodingexpert2.databinding.FragmentDetailLeagueBinding
+import com.example.dicodingexpert2.ui.classment.ClassmentMatchFragment
 import com.example.dicodingexpert2.ui.favorite.FavoriteFragment
+import com.example.dicodingexpert2.ui.listteam.ListTeamFragment
 import com.example.dicodingexpert2.ui.nextmatch.NextMatchFragment
 import com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment
 import com.example.dicodingexpert2.utils.Result
@@ -88,7 +90,9 @@ class DetailLeagueFragment : Fragment() {
             when (position) {
                 0 -> tab.setText("Next Match")
                 1 -> tab.setText("Preview Match")
-                2 -> tab.setText("Favorite Match")
+                2 -> tab.setText("Classment")
+                3 -> tab.setText("Team")
+                4 -> tab.setText("Favorite Match")
             }
         }.attach()
     }
@@ -97,12 +101,14 @@ class DetailLeagueFragment : Fragment() {
 
         var id = idLeague
 
-        override fun getItemCount(): Int = 3
+        override fun getItemCount(): Int = 5
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 ->  NextMatchFragment.newInstance(id)
                 1 -> PreviousMatchFragment.newInstance(id)
+                2 -> ClassmentMatchFragment.newInstance(id)
+                3 -> ListTeamFragment.newInstance(id)
                 else -> FavoriteFragment.newInstance()
             }
         }

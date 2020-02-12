@@ -46,7 +46,6 @@ class HomeLeagueFragmentTest {
         onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(testingSearch), closeSoftKeyboard())
     }
 
-
     @Test
     fun searchEmpty () {
         Thread.sleep(3000)

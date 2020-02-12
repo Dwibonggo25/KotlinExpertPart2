@@ -38,6 +38,9 @@
         <action
             android:id="@+id/actionFavoriteFragmentLaunch"
             app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/actionDetailTeamLaunch"
+            app:destination="@id/detailTeamFragment" />
     </fragment>
     <fragment
         android:id="@+id/matchInfoFragment"
@@ -73,4 +76,29 @@
         android:name="com.example.dicodingexpert2.ui.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/clasemenMatchFragment"
+        android:name="com.example.dicodingexpert2.ui.classment.ClassmentMatchFragment"
+        android:label="fragment_clasemen_match"
+        tools:layout="@layout/fragment_clasemen_match" />
+    <fragment
+        android:id="@+id/listTeamFragment"
+        android:name="com.example.dicodingexpert2.ui.listteam.ListTeamFragment"
+        android:label="fragment_list_team"
+        tools:layout="@layout/fragment_list_team" />
+    <fragment
+        android:id="@+id/detailTeamFragment"
+        android:name="com.example.dicodingexpert2.ui.detailteam.DetailTeamFragment"
+        android:label="fragment_detail_team"
+        tools:layout="@layout/fragment_detail_team" >
+        <argument
+            android:name="team_id"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteTeam"
+        android:name="com.example.dicodingexpert2.FavoriteTeam"
+        android:label="fragment_favorite_team"
+        tools:layout="@layout/fragment_favorite_team" />
 </navigation>

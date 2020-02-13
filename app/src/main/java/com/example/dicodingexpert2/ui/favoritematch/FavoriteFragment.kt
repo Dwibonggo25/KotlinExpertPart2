@@ -1,4 +1,4 @@
-package com.example.dicodingexpert2.ui.favorite
+package com.example.dicodingexpert2.ui.favoritematch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,6 @@ import com.example.dicodingexpert2.R
 import com.example.dicodingexpert2.databinding.FragmentFavoriteBinding
 import com.example.dicodingexpert2.db.entity.Favorite
 import com.example.dicodingexpert2.ui.detailleague.DetailLeagueFragmentDirections
-import com.example.dicodingexpert2.ui.previousmatch.PreviousMatchFragment
 import com.example.dicodingexpert2.utils.ViewModelFactory
 
 class FavoriteFragment : Fragment(), FavoriteAdapter.OnFavoriteClickListener {

@@ -2,16 +2,18 @@ package com.example.dicodingexpert2.ui.detailleague
 
 import android.util.Log
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.example.dicodingexpert2.api.ApiService
 import com.example.dicodingexpert2.base.BaseViewmodel
 import com.example.dicodingexpert2.model.LeagueDetail
 import com.example.dicodingexpert2.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 
 class DetailLeagueViewmodel (private var api: ApiService) : BaseViewmodel() {
+
+    val searchText = MutableLiveData<String>()
 
     var idLeague = MutableLiveData <String>()
 
@@ -20,6 +22,16 @@ class DetailLeagueViewmodel (private var api: ApiService) : BaseViewmodel() {
     private val _isDetailLeague = MutableLiveData<com.example.dicodingexpert2.utils.Result<LeagueDetail>>()
     val isDetailLeague : LiveData <com.example.dicodingexpert2.utils.Result<LeagueDetail>>
         get() = _isDetailLeague
+
+    val search = searchText.switchMap {
+        liveData(context = viewModelScope.coroutineContext + Dispatchers.IO) {
+            if (searchText.value.isNullOrEmpty()) {
+                emit(null)
+            } else {
+                emit(getApiResult { api.searchTeam(searchText.value!!) })
+            }
+        }
+    }
 
     fun getDetailLeague (id: String) {
         mCompositeDisposable += api.getDetailLeague(id)
@@ -44,6 +56,10 @@ class DetailLeagueViewmodel (private var api: ApiService) : BaseViewmodel() {
 
     private fun setResult (result: com.example.dicodingexpert2.utils.Result<LeagueDetail>) {
         _isDetailLeague.postValue(result)
+    }
+
+    fun setText(text: String) {
+        searchText.value = text
     }
 
 }

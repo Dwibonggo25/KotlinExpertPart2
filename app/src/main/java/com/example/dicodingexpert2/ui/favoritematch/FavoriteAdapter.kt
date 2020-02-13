@@ -1,4 +1,4 @@
-package com.example.dicodingexpert2.ui.favorite
+package com.example.dicodingexpert2.ui.favoritematch
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dicodingexpert2.databinding.RvItemFavoriteBinding
-import com.example.dicodingexpert2.databinding.RvMatchInfoBinding
 import com.example.dicodingexpert2.db.entity.Favorite
 
 class FavoriteAdapter (private val listener: OnFavoriteClickListener) : ListAdapter <Favorite, FavoriteAdapter.ViewHolder> (DiffCallback){

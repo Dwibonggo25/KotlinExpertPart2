@@ -29,6 +29,10 @@ class ListTeamAdapter (private var listener : OnClickTeamListener) : ListAdapter
                     listener.onItemTeamClick(item)
                 }
 
+                binding.ivFavorite.setOnClickListener {
+                    listener.onItemFavoriteClick(item)
+                }
+
                 binding.executePendingBindings()
 
             }
@@ -49,5 +53,6 @@ class ListTeamAdapter (private var listener : OnClickTeamListener) : ListAdapter
 
     interface OnClickTeamListener {
         fun onItemTeamClick (data: ListTeam)
+        fun onItemFavoriteClick (data: ListTeam)
     }
 }

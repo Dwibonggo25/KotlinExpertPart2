@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -38,7 +39,7 @@ class ListTeamFragment : Fragment(), ListTeamAdapter.OnClickTeamListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModelFactory = ViewModelFactory {ListTeamViewmodel (Api.retrofitService)}
+        viewModelFactory = ViewModelFactory {ListTeamViewmodel (Api.retrofitService, activity!!)}
         viewModel = ViewModelProvider(activity!!, viewModelFactory).get(ListTeamViewmodel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_team, container, false)
         return binding.root
@@ -60,6 +61,12 @@ class ListTeamFragment : Fragment(), ListTeamAdapter.OnClickTeamListener {
                 }
             }
         })
+
+        viewModel.isMessage.observe(this, Observer {
+            it?.let {
+                Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun initRecyclerView() {
@@ -71,5 +78,9 @@ class ListTeamFragment : Fragment(), ListTeamAdapter.OnClickTeamListener {
         val action = DetailLeagueFragmentDirections.actionDetailTeamLaunch()
         action.setTeamId(data.idTeam)
         findNavController().navigate(action)
+    }
+
+    override fun onItemFavoriteClick(data: ListTeam) {
+        viewModel.insertFavoriteTeam(data)
     }
 }

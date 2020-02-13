@@ -73,7 +73,7 @@
 
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.dicodingexpert2.ui.favorite.FavoriteFragment"
+        android:name="com.example.dicodingexpert2.ui.favoritematch.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteTeam"
-        android:name="com.example.dicodingexpert2.FavoriteTeam"
+        android:name="com.example.dicodingexpert2.ui.favoriteteam.FavoriteTeamFragment"
         android:label="fragment_favorite_team"
         tools:layout="@layout/fragment_favorite_team" />
 </navigation>

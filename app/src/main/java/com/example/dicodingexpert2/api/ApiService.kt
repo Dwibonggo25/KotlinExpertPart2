@@ -43,4 +43,7 @@ interface ApiService {
 
     @GET ("lookupteam.php")
     fun fetchDetailTeam (@Query(value = "id") id: String) : Observable <DetailTeamResponse>
+
+    @GET ("searchteams.php")
+    suspend fun searchTeam(@Query("t") e: String): Response <SearchTeamResponse>
 }
